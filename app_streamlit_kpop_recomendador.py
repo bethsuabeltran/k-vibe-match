@@ -496,7 +496,7 @@ st.markdown(
 )
 
 st.markdown(
-    '<div class="main-subtitle">Descubre discos K-pop a partir de uno o dos discos de referencia. El sistema compara principalmente tags y, de forma secundaria, la cercanía temporal.</div>',
+    '<div class="main-subtitle">¡Descubre tu álbum de K-pop a partir de uno o dos de tus discos favoritos!</div>',
     unsafe_allow_html=True
 )
 
@@ -506,19 +506,19 @@ TOKEN_DISCOGS = st.secrets["TOKEN_DISCOGS"]
 col1, col2 = st.columns(2)
 
 with col1:
-    artista_1 = st.text_input("Artista 1", value="Taylor Swift")
+    artista_1 = st.text_input("Artista 1", placeholder="Escribe tu artista #1 (Ej. Taylor Swift)")
 
 with col2:
-    album_1 = st.text_input("Álbum 1", value="1989")
+    album_1 = st.text_input("Álbum 1", placeholder="Escribe tu disco favorito de este artista #1 (Ej. 1989)")
 
 
 col3, col4 = st.columns(2)
 
 with col3:
-    artista_2 = st.text_input("Artista 2", value="The Weeknd")
+    artista_2 = st.text_input("Artista 2 (Opcional)", placeholder="Escribe tu artista #2 (Ej. Demi Lovato)")
 
 with col4:
-    album_2 = st.text_input("Álbum 2", value="After Hours")
+    album_2 = st.text_input("Álbum 2 (Opcional)", placeholder="Escribe tu disco favorito de este artista (Ej. It's not that deep)")
 
 boton = st.button("Generar recomendaciones")
 
