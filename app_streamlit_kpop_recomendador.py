@@ -791,7 +791,10 @@ if boton:
     )
 
     if not df_timeline.empty:
-        df_timeline["y_pos"] = 1
+        df_timeline["y_pos"] = df_timeline["grupo"].map({
+            "Input usuario": 1.03,
+            "Recomendación": 0.97
+        })
         
         fig_timeline = px.scatter(
             df_timeline,
@@ -806,12 +809,16 @@ if boton:
             title="Ubicación temporal de inputs y recomendaciones"
         )
 
-        fig_timeline.update_traces(marker=dict(size=14))
+        fig_timeline.update_traces(marker=dict(size=14,line=dict(width=1, color="white")))
 
-        fig_timeline.add_hline(
-            y=1,
-            line_width=2,
-            line_color="#D7DAB3"
+        fig_timeline.add_shape(
+            type="line",
+            x0=df_timeline["anio"].min() - 0.5,
+            x1=df_timeline["anio"].max() + 0.5,
+            y0=1,
+            y1=1,
+            line=dict(color="#D7DAB3", width=2),
+            layer="below"
         )
         
         fig_timeline.update_layout(
@@ -840,7 +847,7 @@ if boton:
             title_font=dict(color="#18421a")
         )
         fig_timeline.update_yaxes(
-            range=[0.85, 1.15],
+            range=[0.93, 1.07],
             showgrid=False,
             showticklabels=False,
             title_text="",
