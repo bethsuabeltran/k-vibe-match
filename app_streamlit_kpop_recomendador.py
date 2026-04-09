@@ -129,12 +129,18 @@ html, body, [class*="css"] {
 }
 
 /* Labels de inputs */
-label, .stTextInput label {
+div[data-testid="stTextInput"] label p,
+div[data-testid="stTextInput"] label span,
+div[data-testid="stTextInput"] label,
+div[data-testid="stTextInputRootElement"] label p,
+div[data-testid="stTextInputRootElement"] label span,
+div[data-testid="stTextInputRootElement"] label {
     font-family: 'Poppins', sans-serif !important;
-    font-size: 1.02rem !important;
+    font-size: 1.08rem !important;
     color: #4A6644 !important;
     font-weight: 700 !important;
     letter-spacing: 0.15px !important;
+    opacity: 1 !important;
 }
 
 /* Inputs */
