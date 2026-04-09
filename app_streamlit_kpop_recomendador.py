@@ -488,7 +488,7 @@ def construir_df_timeline(perfiles_validos, top_5):
     return pd.DataFrame(filas)
 
 # INTERFAZ
-st.image("assets/log.png", width=220)
+st.image("assets/log.PNG", width=220)
 
 st.markdown(
     '<div class="main-title"><span class="title-green">K-vibe</span> <span class="title-pink">Match</span></div>',
