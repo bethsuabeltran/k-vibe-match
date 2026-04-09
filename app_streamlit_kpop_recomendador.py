@@ -791,15 +791,10 @@ if boton:
     )
 
     if not df_timeline.empty:
-        df_timeline["y_pos"] = df_timeline["grupo"].map({
-            "Input usuario": 1.03,
-            "Recomendación": 0.97
-        })
-        
         fig_timeline = px.scatter(
             df_timeline,
             x="anio",
-            y="y_pos",
+            y="grupo",
             color="grupo",
             hover_data=["nombre", "artista"],
             color_discrete_map={
@@ -809,18 +804,8 @@ if boton:
             title="Ubicación temporal de inputs y recomendaciones"
         )
 
-        fig_timeline.update_traces(marker=dict(size=14,line=dict(width=1, color="white")))
+        fig_timeline.update_traces(marker=dict(size=14))
 
-        fig_timeline.add_shape(
-            type="line",
-            x0=df_timeline["anio"].min() - 0.5,
-            x1=df_timeline["anio"].max() + 0.5,
-            y0=1,
-            y1=1,
-            line=dict(color="#D7DAB3", width=2),
-            layer="below"
-        )
-        
         fig_timeline.update_layout(
             paper_bgcolor="#F3F5EC",
             plot_bgcolor="#F3F5EC",
@@ -828,7 +813,7 @@ if boton:
             title_font=dict(color="#18421a", family="Poppins", size=22),
             yaxis_title="",
             xaxis_title="Año",
-            height=320,
+            height=380,
             legend_title_text="",
             legend=dict(
                 font=dict(color="#18421a", family="Poppins"),
@@ -847,15 +832,13 @@ if boton:
             title_font=dict(color="#18421a")
         )
         fig_timeline.update_yaxes(
-            range=[0.93, 1.07],
-            showgrid=False,
-            showticklabels=False,
-            title_text="",
-            zeroline=False,
-            visible=False
+            gridcolor="#D7DAB3",
+            tickfont=dict(color="#18421a"),
+            title_font=dict(color="#18421a")
         )
 
         st.plotly_chart(fig_timeline, use_container_width=True)
     else:
         st.info("No hubo suficientes años válidos para construir la línea de tiempo.")
+
 
