@@ -141,7 +141,25 @@ div[data-baseweb="input"] input {
     color: #4A6644 !important;
     background-color: #FFFDFB !important;
 }
+div[data-baseweb="input"] input::placeholder {
+    color: #9FAA74 !important;
+    opacity: 1 !important;
+}
 
+div[data-baseweb="input"] input::-webkit-input-placeholder {
+    color: #9FAA74 !important;
+    opacity: 1 !important;
+}
+
+div[data-baseweb="input"] input::-moz-placeholder {
+    color: #9FAA74 !important;
+    opacity: 1 !important;
+}
+
+div[data-baseweb="input"] input:-ms-input-placeholder {
+    color: #9FAA74 !important;
+    opacity: 1 !important;
+}
 /* Cajas de input visibles */
 div[data-baseweb="input"] > div {
     background-color: #FFFDFB !important;
