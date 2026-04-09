@@ -130,8 +130,11 @@ html, body, [class*="css"] {
 
 /* Labels de inputs */
 label, .stTextInput label {
+    font-family: 'Yeseva One', serif !important;
+    font-size: 1.08rem !important;
     color: #4A6644 !important;
-    font-weight: 900 !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.2px !important;;
 }
 
 /* Inputs */
