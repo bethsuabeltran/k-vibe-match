@@ -791,12 +791,12 @@ if boton:
     )
 
     if not df_timeline.empty:
-        df_timeline["linea"] = "Año"
+        df_timeline["y_pos"] = 1
         
         fig_timeline = px.scatter(
             df_timeline,
             x="anio",
-            y="grupo",
+            y="y_pos",
             color="grupo",
             hover_data=["nombre", "artista"],
             color_discrete_map={
@@ -808,6 +808,12 @@ if boton:
 
         fig_timeline.update_traces(marker=dict(size=14))
 
+        fig_timeline.add_hline(
+            y=1,
+            line_width=2,
+            line_color="#D7DAB3"
+        )
+        
         fig_timeline.update_layout(
             paper_bgcolor="#F3F5EC",
             plot_bgcolor="#F3F5EC",
@@ -834,10 +840,12 @@ if boton:
             title_font=dict(color="#18421a")
         )
         fig_timeline.update_yaxes(
+            range=[0.85, 1.15],
             showgrid=False,
             showticklabels=False,
             title_text="",
-            zeroline=False
+            zeroline=False,
+            visible=False
         )
 
         st.plotly_chart(fig_timeline, use_container_width=True)
