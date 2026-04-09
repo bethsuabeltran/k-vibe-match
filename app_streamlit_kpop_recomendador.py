@@ -791,6 +791,8 @@ if boton:
     )
 
     if not df_timeline.empty:
+        df_timeline["linea"] = "Año"
+        
         fig_timeline = px.scatter(
             df_timeline,
             x="anio",
@@ -813,7 +815,7 @@ if boton:
             title_font=dict(color="#18421a", family="Poppins", size=22),
             yaxis_title="",
             xaxis_title="Año",
-            height=380,
+            height=320,
             legend_title_text="",
             legend=dict(
                 font=dict(color="#18421a", family="Poppins"),
@@ -832,9 +834,10 @@ if boton:
             title_font=dict(color="#18421a")
         )
         fig_timeline.update_yaxes(
-            gridcolor="#D7DAB3",
-            tickfont=dict(color="#18421a"),
-            title_font=dict(color="#18421a")
+            showgrid=False,
+            showticklabels=False,
+            title_text="",
+            zeroline=False
         )
 
         st.plotly_chart(fig_timeline, use_container_width=True)
