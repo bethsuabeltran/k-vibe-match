@@ -3,7 +3,6 @@ import pandas as pd
 from collections import Counter
 import plotly.graph_objects as go
 import plotly.express as px
-import hydralit_components as hc
 
 from backend_recomendador import preparar_backend_desde_csv, recomendar_discos_kpop
 
@@ -333,12 +332,6 @@ def ambos_inputs_invalidos(perfiles_usuario):
         for perfil in perfiles_usuario
     )
 
-from collections import Counter
-import pandas as pd
-import plotly.graph_objects as go
-import plotly.express as px
-
-
 def obtener_tags_eje(perfiles_validos, max_tags=6):
     """
     Obtiene los tags más repetidos solo a partir del perfil del usuario.
@@ -578,10 +571,7 @@ if boton:
         st.error("Si usas el input 2, debes llenar artista y álbum.")
         st.stop()
 
-    with hc.HyLoader(
-        "Generando las mejores recomendaciones k-pop para ti...",
-        hc.Loaders.pulse_bars,
-    ):
+    with st.spinner("Generando las mejores recomendaciones k-pop para ti..."):
         df_modelo, anio_min, anio_max, dicc_pesos = cargar_backend(RUTA_CSV)
 
         salida = recomendar_discos_kpop(
@@ -885,4 +875,3 @@ if boton:
         st.plotly_chart(fig_timeline, use_container_width=True)
     else:
         st.info("No hubo suficientes años válidos para construir la línea de tiempo.")
-
