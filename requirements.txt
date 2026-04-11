@@ -1,6 +1,6 @@
 streamlit
 pandas
-numpy==1.26.4
+numpy
 requests
 plotly
-hydralit-components==1.0.10
+hydralit-components
