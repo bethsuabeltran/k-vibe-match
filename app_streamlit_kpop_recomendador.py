@@ -319,6 +319,19 @@ def construir_resumen_perfiles(perfiles_usuario, perfiles_validos):
 
     return lineas
 
+def ambos_inputs_invalidos(perfiles_usuario):
+    """
+    Devuelve True si existen dos inputs y ambos quedaron inválidos
+    para recomendación (no accepted_input).
+    """
+    if not isinstance(perfiles_usuario, list) or len(perfiles_usuario) != 2:
+        return False
+
+    return all(
+        perfil.get("discogs_match_status") != "accepted_input"
+        for perfil in perfiles_usuario
+    )
+
 from collections import Counter
 import pandas as pd
 import plotly.graph_objects as go
@@ -580,9 +593,10 @@ if boton:
         )
 
     if salida["status"] != "ok":
-        st.error(salida["mensaje"])
-        st.write("Perfiles usuario:")
-        st.write(salida["perfiles_usuario"])
+        if ambos_inputs_invalidos(salida.get("perfiles_usuario", [])):
+            st.error("Lo siento, los dos artistas que introdujiste están mal escritos. Inténtalo de nuevo.")
+        else:
+            st.error(salida["mensaje"])
         st.stop()
 
     st.success(salida["mensaje"])
@@ -867,5 +881,3 @@ if boton:
         st.plotly_chart(fig_timeline, use_container_width=True)
     else:
         st.info("No hubo suficientes años válidos para construir la línea de tiempo.")
-
-
