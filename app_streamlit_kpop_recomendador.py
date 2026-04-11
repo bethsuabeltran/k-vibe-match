@@ -885,3 +885,4 @@ if boton:
         st.plotly_chart(fig_timeline, use_container_width=True)
     else:
         st.info("No hubo suficientes años válidos para construir la línea de tiempo.")
+
