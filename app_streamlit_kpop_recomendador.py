@@ -3,6 +3,7 @@ import pandas as pd
 from collections import Counter
 import plotly.graph_objects as go
 import plotly.express as px
+import hydralit_components as hc
 
 from backend_recomendador import preparar_backend_desde_csv, recomendar_discos_kpop
 
@@ -577,7 +578,10 @@ if boton:
         st.error("Si usas el input 2, debes llenar artista y álbum.")
         st.stop()
 
-    with st.spinner("Generando las mejores recomendaciones k-pop para ti..."):
+    with hc.HyLoader(
+        "Generando las mejores recomendaciones k-pop para ti...",
+        hc.Loaders.pulse_bars,
+    ):
         df_modelo, anio_min, anio_max, dicc_pesos = cargar_backend(RUTA_CSV)
 
         salida = recomendar_discos_kpop(
