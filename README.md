@@ -62,6 +62,7 @@ El sistema sigue este flujo:
 ---
 
 ## Estructura del proyecto
+```bash
 k-vibe-match/
 ├── app_streamlit_kpop_recomendador.py
 ├── backend_recomendador.py
@@ -72,6 +73,7 @@ k-vibe-match/
     └── log.PNG
 └── data/
     └── df_modelo_final.csv
+```
 
 ---
 
