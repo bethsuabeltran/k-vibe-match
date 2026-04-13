@@ -12,7 +12,7 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 # PERFIL (RADAR)
 def generar_explicacion_radar(tags_input_1, tags_input_2=None, tags_compartidos=None, tags_promedio=None):
     prompt = f"""
-Redacta una explicación breve, natural y alegre sobre el perfil musical detectado.
+Redacta una explicación breve y natural sobre el perfil musical detectado.
 
 Datos:
 - Tags del disco 1: {tags_input_1}
@@ -21,16 +21,13 @@ Datos:
 - Tags del perfil final del usuario: {tags_promedio if tags_promedio else []}
 
 Reglas:
-- Usa únicamente estos datos.
 - No inventes nada.
-- Lo más importante es describir el perfil final del usuario.
-- Primero explica cómo es el perfil del usuario detectado.
-- Después menciona brevemente qué aporta el disco 1.
-- Si existe disco 2, menciona brevemente qué aporta el disco 2.
-- Si hay tags compartidos, úsalos para explicar qué une ambos discos.
-- No exageres ni uses frases demasiado floridas.
-- El tono debe ser natural, claro y alegre, sin exagerar.
-- Redacta como texto explicativo, no como mensaje conversacional.
+- No enumeres todos los géneros.
+- Identifica 2 o 3 rasgos principales del perfil (ej: energético, melódico, experimental, emocional, etc.).
+- Describe el perfil como una identidad musical, no como una lista.
+- Explica brevemente qué aporta cada disco al perfil.
+- Si hay conexión entre ambos discos, explícalo de forma natural.
+- Evita frases genéricas como "diverso", "vibrante", "mezcla de géneros".
 - Máximo 45 palabras.
 - Un solo párrafo.
 """
@@ -54,13 +51,12 @@ Datos:
 - Tags de las recomendaciones: {tags_recs}
 
 Reglas:
-- Usa únicamente estos datos.
 - No inventes nada.
-- No saludes y no cierres con frases tipo "listo para disfrutar".
-- Redacta como texto explicativo, no como mensaje conversacional.
-- Explica en lenguaje sencillo qué rasgos definen al usuario.
-- Luego explica porque las recomendaciones dadas son el mejor match con el usuario ya que conservan esos mismos rasgos.
-- El tono debe ser natural, claro y alegre, sin exagerar.
+- No repitas los mismos géneros.
+- Explica qué tipo de sonido o estilo se mantiene entre usuario y recomendaciones.
+- Describe el tipo de experiencia musical (ej: más emocional, más energética, más experimental).
+- Evita frases genéricas como "coinciden perfectamente".
+- Haz que la explicación aporte algo nuevo.
 - Máximo 45 palabras.
 - Un solo párrafo.
 """
@@ -91,7 +87,9 @@ Reglas:
 - Si hay tags distintivos, menciona primero qué comparte con el perfil y después qué lo diferencia.
 - Si no hay tags distintivos, explica por qué hace match con el perfil del usuario y lo que caracteriza a ese disco.
 - Nunca digas que "no tiene tags distintivos".
-- El tono debe ser natural, claro y alegre, sin exagerar.
+- Evita frases genéricas como "sonido fresco", "ideal para disfrutar" o similares.
+- Sé específico: describe el tipo de energía, estilo o sensación del álbum.
+- Haz que cada explicación suene distinta entre sí.
 - Máximo 40 palabras.
 - Un solo párrafo.
 """
