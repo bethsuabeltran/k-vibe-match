@@ -89,7 +89,7 @@ Reglas:
 - No inventes nada.
 - No expliques que es k-pop.
 - Si hay tags distintivos, menciona primero qué comparte con el perfil y después qué lo diferencia.
-- Si no hay tags distintivos, explica solo por qué hace match con el perfil del usuario.
+- Si no hay tags distintivos, explica por qué hace match con el perfil del usuario y lo que caracteriza a ese disco.
 - Nunca digas que "no tiene tags distintivos".
 - El tono debe ser natural, claro y alegre, sin exagerar.
 - Máximo 40 palabras.
