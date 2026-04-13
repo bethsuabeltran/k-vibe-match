@@ -94,6 +94,6 @@ k-vibe-match/
 ---
 
 ## Proyecto académico
-Desarrollado como proyecto final enfocado en sistemas de recomendación y experiencia de usuario aplicada a música K-pop.
-Elaborado por: Bethsua Beltrán Aguilar - Diplomado en Ciencia de Datos - Generación 30
+- Desarrollado como proyecto final enfocado en sistemas de recomendación y experiencia de usuario aplicada a música K-pop.
+- Elaborado por: Bethsua Beltrán Aguilar - Diplomado en Ciencia de Datos - Generación 30
 
