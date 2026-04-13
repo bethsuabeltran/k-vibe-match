@@ -741,7 +741,7 @@ def render_card_recomendacion(fila):
             st.markdown('<div class="must-listen">⭐ MUST LISTEN</div>', unsafe_allow_html=True)
 
         st.markdown(
-            f'<div style="font-size: 1.35rem; font-weight: 700; color: #4A6644; margin-bottom: 0.8rem;">{fila.get("nombre_album", "Álbum sin nombre")}</div>',
+            f'<div style="font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 700; color: #4A6644; margin-bottom: 0.8rem;">{fila.get("nombre_album", "Álbum sin nombre")}</div>',
             unsafe_allow_html=True
         )
 
@@ -877,8 +877,9 @@ def render_card_input(perfil, numero_input=1):
             st.markdown(
                 f"""
                 <div style="
-                    width:250px;
-                    height:250px;
+                    width:100%;
+                    max-width:250px;
+                    aspect-ratio:1/1;
                     border-radius:16px;
                     overflow:hidden;
                     background:#F8F6F0;
@@ -925,7 +926,7 @@ def render_card_input(perfil, numero_input=1):
         )
 
         st.markdown(
-            f'<div style="font-size: 1.35rem; font-weight: 700; color: #4A6644; margin-bottom: 0.8rem;">{album}</div>',
+            f'<div style="font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 700; color: #4A6644; margin-bottom: 0.8rem;">{album}</div>',
             unsafe_allow_html=True
         )
 
