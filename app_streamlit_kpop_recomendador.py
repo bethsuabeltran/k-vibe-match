@@ -720,12 +720,32 @@ def render_card_recomendacion(fila):
 
     with card_img:
         if fila.get("album_image_url"):
-            st.image(fila["album_image_url"], width=250)
-
+            st.markdown(
+                f"""
+                <div style="
+                    width: 100%;
+                    max-width: 250px;
+                    aspect-ratio: 1 / 1;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    background: #F8F6F0;
+                    border: 1px solid #D7DAB3;
+                ">
+                    <img src="{fila['album_image_url']}" style="
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    ">
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+    
         if fila.get("url_album"):
             st.markdown(
                 f"""
-                <div style="width: 250px; margin-top: 12px;">
+                <div style="width: 100%; max-width: 250px; margin-top: 12px;">
                     <a href="{fila['url_album']}" target="_blank" class="spotify-btn">
                         Escuchar en Spotify
                     </a>
@@ -733,7 +753,6 @@ def render_card_recomendacion(fila):
                 """,
                 unsafe_allow_html=True
             )
-
     with card_info:
         st.markdown('<div class="top5-card">', unsafe_allow_html=True)
 
@@ -741,7 +760,19 @@ def render_card_recomendacion(fila):
             st.markdown('<div class="must-listen">⭐ MUST LISTEN</div>', unsafe_allow_html=True)
 
         st.markdown(
-            f'<div style="font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 700; color: #4A6644; margin-bottom: 0.8rem;">{fila.get("nombre_album", "Álbum sin nombre")}</div>',
+            f'''
+            <div style="
+                font-size: clamp(1rem, 2.2vw, 1.35rem);
+                font-weight: 700;
+                color: #4A6644;
+                margin-bottom: 0.8rem;
+                line-height: 1.25;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            ">
+                {fila.get("nombre_album", "Álbum sin nombre")}
+            </div>
+            ''',
             unsafe_allow_html=True
         )
 
@@ -806,7 +837,17 @@ def render_card_recomendacion(fila):
         )
 
         st.markdown(
-            f'<div class="explicacion-text"><span class="meta-label">Explicación:</span> <span style="font-weight: 600;">{explicacion_bonita}</span></div>',
+            f'''
+            <div class="explicacion-text" style="
+                font-size: clamp(0.92rem, 1.8vw, 1rem);
+                line-height: 1.7;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            ">
+                <span class="meta-label">Explicación:</span>
+                <span style="font-weight: 600;">{explicacion_bonita}</span>
+            </div>
+            ''',
             unsafe_allow_html=True
         )
 
@@ -947,7 +988,7 @@ def render_card_input(perfil, numero_input=1):
         )
 
         st.markdown(
-            f'<div class="explicacion-text"><span class="meta-label">Tags principales:</span> <span style="font-weight: 600;">{tags_texto}</span></div>',
+            f'<div style="font-size: clamp(0.9rem, 1.7vw, 1rem); overflow-wrap: break-word; word-break: break-word;"><span class="meta-label">Tags principales:</span> <span style="font-weight: 600;">{tags_texto}</span></div>',
             unsafe_allow_html=True
         )
 
