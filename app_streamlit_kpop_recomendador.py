@@ -1585,7 +1585,7 @@ st.markdown(
     <div class="app-footer">
         <strong>K-vibe Match</strong><br>
         Descubre tu álbum ideal de K-pop a partir de tus discos favoritos.<br>
-        Bethsua Lizbeth Beltrán Aguilar <br>
+        Bethsua Beltrán Aguilar <br>
         Proyecto académico · 2026
     </div>
     """,
