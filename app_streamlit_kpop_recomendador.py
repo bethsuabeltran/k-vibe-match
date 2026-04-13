@@ -1130,7 +1130,8 @@ if boton:
                 if t not in tags_excluir_llm
             ])
 
-        tags_promedio = list(dict.fromkeys(tags_promedio))[:6]
+        contador = Counter(tags_promedio)
+        tags_promedio = [tag for tag, _ in contador.most_common(6)]
 
         tags_compartidos = []
         if len(perfiles_validos) >= 2:
