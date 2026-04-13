@@ -35,7 +35,7 @@ Reglas:
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}],
-        temperature=0.3
+        temperature=0.6
     )
 
     return response.choices[0].message.content.strip()
@@ -64,7 +64,7 @@ Reglas:
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}],
-        temperature=0.3
+        temperature=0.6
     )
 
     return response.choices[0].message.content.strip()
@@ -97,7 +97,7 @@ Reglas:
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}],
-        temperature=0.3
+        temperature=0.6
     )
 
     return response.choices[0].message.content.strip()
