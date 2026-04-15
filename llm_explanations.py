@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 from openai import OpenAI
+from typing import Optional
 
 OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY", ""))
 
@@ -8,6 +9,29 @@ if not OPENAI_API_KEY:
     raise ValueError("No se encontró OPENAI_API_KEY en secrets ni en variables de entorno.")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
+
+@st.cache_data(show_spinner=False)
+def generar_fun_fact_artista(artist: str) -> str:
+    prompt = f"""
+Dame un dato curioso, breve e interesante sobre el artista musical "{artist}".
+
+Reglas:
+- Máximo 28 palabras.
+- Un solo párrafo.
+- Tono natural, claro y alegre.
+- No inventes.
+- No uses introducciones como "¿Sabías que?".
+- No repitas datos demasiado genéricos.
+- Responde directamente con el dato.
+"""
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.8
+    )
+
+    return response.choices[0].message.content.strip()
 
 # PERFIL (RADAR)
 def generar_explicacion_radar(tags_input_1, tags_input_2=None, tags_compartidos=None, tags_promedio=None):
