@@ -92,7 +92,7 @@ Reglas:
 - Da un dato especifico sobre las letras o temática del álbum.
 - Identifica si la sugerencia representan una mezcla equilibrada entre ambos inputs o si están más orientadas a uno de ellos.
 - Haz que cada explicación suene distinta entre sí.
-- Máximo 60 palabras.
+- Máximo 50 palabras.
 - Un solo párrafo.
 """
 
