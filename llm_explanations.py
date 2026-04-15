@@ -89,7 +89,8 @@ Reglas:
 - Nunca digas que "no tiene tags distintivos".
 - Evita frases genéricas como "sonido fresco", "ideal para disfrutar" o similares.
 - Sé específico: describe el tipo de energía, estilo o sensación del álbum.
-- Da un dato especifico sobre las letras o temática del álbum,
+- Da un dato especifico sobre las letras o temática del álbum.
+- Identifica si la sugerencia representan una mezcla equilibrada entre ambos inputs o si están más orientadas a uno de ellos.
 - Haz que cada explicación suene distinta entre sí.
 - Máximo 60 palabras.
 - Un solo párrafo.
