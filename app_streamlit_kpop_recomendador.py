@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import os
 from backend_recomendador import preparar_backend_desde_csv, recomendar_discos_kpop
-from llm_explanations import (generar_explicacion_radar,generar_explicacion_comparativo,generar_explicacion_recomendacion)
+from llm_explanations import (generar_explicacion_radar,generar_explicacion_comparativo,generar_explicacion_recomendacion, generar_fun_fact_artista)
 
 # CONFIGURACION GENERAL
 st.set_page_config(
@@ -1104,13 +1104,42 @@ if boton:
         st.stop()
 
     loader_placeholder = st.empty()
-
+    fun_fact_placeholder = st.empty()
     with loader_placeholder.container():
         mostrar_loader("Generando las mejores recomendaciones k-pop para ti...")
 
     try:
+        artista_fun_fact = artista_1.strip()
+    
+        try:
+            fun_fact = generar_fun_fact_artista(artista_fun_fact)
+            fun_fact_placeholder.markdown(
+                f"""
+                <div style="
+                    background:#F8F6F0;
+                    border:1px solid #D7DAB3;
+                    border-radius:16px;
+                    padding:0.9rem 1rem;
+                    margin-top:0.6rem;
+                    margin-bottom:0.4rem;
+                    color:#4A6644;
+                    box-shadow: 0 6px 18px rgba(74, 102, 68, 0.06);
+                ">
+                    <div style="font-weight:800; color:#C66F80; margin-bottom:0.35rem;">
+                        Dato curioso de {artista_fun_fact}
+                    </div>
+                    <div style="line-height:1.6;">
+                        {fun_fact}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+        except Exception:
+            pass
+    
         df_modelo, anio_min, anio_max, dicc_pesos = cargar_backend(RUTA_CSV)
-
+    
         salida = recomendar_discos_kpop(
             artista_1=artista_1,
             album_1=album_1,
@@ -1125,6 +1154,7 @@ if boton:
 
     except Exception as e:
         loader_placeholder.empty()
+        fun_fact_placeholder.empty()
         st.error(f"Ocurrió un error al generar las recomendaciones: {e}")
         st.stop()
     finally:
@@ -1228,6 +1258,7 @@ if boton:
     except Exception as e:
         st.error(f"Error generando explicaciones LLM: {e}")
     loader_placeholder.empty()
+    fun_fact_placeholder.empty()
     st.session_state["salida_recomendador"] = salida
 
     if salida["status"] != "ok":
@@ -1237,7 +1268,7 @@ if boton:
             st.error(salida["mensaje"])
         st.stop()   
 
-#SACAR
+
 salida = st.session_state.get("salida_recomendador")
 
 if salida is not None:
